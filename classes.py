@@ -36,7 +36,7 @@ class Task:
 
 
 # Priority Queue Class to store Tasks
-class priorityQueue():
+class PriorityQueue():
     # Constructor Method
     def __init__(self):
         self.__lst = []
@@ -90,6 +90,7 @@ class priorityQueue():
         return
     
 
+# Stack Class to store completed tasks
 class Stack():
     # Constructor Method
     def __init__(self):
@@ -124,3 +125,28 @@ class Stack():
             for i in range(len(self.__lst)):
                 self.__lst[i].displayTask()
             return
+        
+    # See top of stack
+    def peek(self):
+        # Display first item in stack
+        self.__lst[0].displayTask()
+        
+
+# Task Manager Classs to manage all tasks
+class TaskManager():
+    # Constructor Method
+    def __init__(self):
+        self.__task_queue = PriorityQueue()
+        self.__task_history = Stack()
+
+    # Add New task to task queue
+    def addTask(self, task : str, priority : int):
+        self.__task_queue.enqueue(Task(task, priority))
+
+    # Display task queue
+    def displayQueue(self):
+        self.__task_queue.displayQueue()
+
+    # Display task history
+    def displayHistory(self):
+        self.__task_history.displayStack()
