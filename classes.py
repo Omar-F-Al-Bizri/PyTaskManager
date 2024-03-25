@@ -75,11 +75,52 @@ class priorityQueue():
             # Remove and Return first item in list
             return self.__lst.pop(0)
     
+    # Display Priority Queue
     def displayQueue(self):
+        # Case 1: List is empty
         if len(self.__lst) == 0:
+            # Inform User that list is empty
             print("Empty")
+        # Case 2: List not empty
         else:
+            # Display all items in queue
             for i in range(len(self.__lst)):
                 self.__lst[i].displayTask()
                 print()
         return
+    
+
+class Stack():
+    # Constructor Method
+    def __init__(self):
+        self.__lst = []
+
+    # Add item to top of stack
+    def push(self, task : Task):
+        # Add item to beginning of list
+        self.__lst.insert(0, task)
+
+    # Remove item from top of stack
+    def pop(self):
+        # Case 1: List is empty
+        if len(self.__lst) == 0:
+            # Inform User that list is empty
+            print("Empty")
+            return
+        # Case 2: List not empty
+        else:
+            # remove and return first item in list
+            return self.__lst.pop(0)
+    
+    # Display Stack
+    def displayStack(self):
+        # Case 1: List is empty
+        if len(self.__lst) == 0:
+            # Inform User that list is empty
+            print("Empty")
+        # Case 2: List not empty
+        else:
+            # Display all items in stack
+            for i in range(len(self.__lst)):
+                self.__lst[i].displayTask()
+            return
