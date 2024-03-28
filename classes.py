@@ -145,8 +145,13 @@ class Stack():
         
     # See top of stack
     def peek(self):
-        # Return first item in stack
-        return self.__lst[0]
+        # Case 1: List empty
+        if (self.isEmpty()):
+            return None
+        # Case 2: List not empty
+        else:
+            # Return first item in stack
+            return self.__lst[0]
         
 
 # Task Manager Classs to manage all tasks
@@ -182,16 +187,21 @@ class TaskManager():
 
     # Display task queue
     def displayQueue(self):
-        print("Task Queue:\n")
+        print("Task Queue:")
         self.__task_queue.displayQueue()
+        print()
 
     # Display task history
     def displayHistory(self):
-        print("Task History:\n")
+        print("Task History:")
         self.__task_history.displayStack()
+        print()
 
     # Display last completed task
     def peekDisplay(self):
-        print("Last Completed:\n")
-        self.__task_history.peek().displayTask()
+        print("Last Completed:")
+        if (self.__task_history.isEmpty()):
+            print(None)
+        else:
+            self.__task_history.peek().displayTask()
         print()
