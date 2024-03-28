@@ -2,12 +2,16 @@
 
 # Task Class
 class Task:
+    # ID class variable
+    increment_ID = 0
+
     # Constructor Method
     def __init__(self, description : str, priority : int):
         # Set Description of the task
         self.__desc = description
-        # Set ID of the task
-        self.__id = hash(description)
+        # Set ID of the task Incrementally
+        Task.increment_ID += 1
+        self.__id = self.increment_ID
         # Set Priority of the task
         self.__prty = priority
         # Initialize task as Incomplete
@@ -35,16 +39,20 @@ class Task:
         print("Completed:", self.__completed)
 
 
-# Priority Queue Class to store Tasks
-class PriorityQueue():
+#Task Queue Class to store Tasks
+class TaskQueue():
     # Constructor Method
     def __init__(self):
         self.__lst = []
 
+    # Check if task queue is empty
+    def isEmpty(self):
+        return (len(self.__lst) == 0)
+
     # Add an item with priority
     def enqueue(self, task : Task):
         # Case 1: List is empty
-        if len(self.__lst) == 0:
+        if self.isEmpty():
             self.__lst.append(task)
         # Case 2: List not empty
         else:
@@ -75,10 +83,14 @@ class PriorityQueue():
             # Remove and Return first item in list
             return self.__lst.pop(0)
     
+    # Mark first item as complete
+    def markComplete(self):
+        self.__lst[0].setCompleted(True)
+
     # Display Priority Queue
     def displayQueue(self):
         # Case 1: List is empty
-        if len(self.__lst) == 0:
+        if self.isEmpty():
             # Inform User that list is empty
             print("Empty")
         # Case 2: List not empty
@@ -96,6 +108,10 @@ class Stack():
     def __init__(self):
         self.__lst = []
 
+    # Check if stack is empty
+    def isEmpty(self):
+        return (len(self.__lst) == 0)
+
     # Add item to top of stack
     def push(self, task : Task):
         # Add item to beginning of list
@@ -104,7 +120,7 @@ class Stack():
     # Remove item from top of stack
     def pop(self):
         # Case 1: List is empty
-        if len(self.__lst) == 0:
+        if self.isEmpty():
             # Inform User that list is empty
             print("Empty")
             return
@@ -116,7 +132,7 @@ class Stack():
     # Display Stack
     def displayStack(self):
         # Case 1: List is empty
-        if len(self.__lst) == 0:
+        if self.isEmpty():
             # Inform User that list is empty
             print("Empty")
         # Case 2: List not empty
@@ -136,12 +152,32 @@ class Stack():
 class TaskManager():
     # Constructor Method
     def __init__(self):
-        self.__task_queue = PriorityQueue()
+        self.__task_queue = TaskQueue()
         self.__task_history = Stack()
 
     # Add New task to task queue
     def addTask(self, task : str, priority : int):
         self.__task_queue.enqueue(Task(task, priority))
+
+    # Get task using id
+    def getTask(self, id : int):
+        for i in range(len(self.__task_queue)):
+            if (self.__task_queue[i].getID() == id):
+                return self.__task_queue[i]
+        return -1
+    
+    # Mark top task as complete
+    def completeTask(self):
+        # Case 1: List is empty
+        if self.__task_queue.isEmpty():
+            # Inform user that list is empty
+            print("Empty")
+        # Case 2: List not empty
+        else:
+            # Mark first task as complete
+            self.__task_queue.markComplete()
+            # Move first item in task queue to top of task history
+            self.__task_history.push(self.__task_queue.dequeue())
 
     # Display task queue
     def displayQueue(self):
@@ -150,3 +186,18 @@ class TaskManager():
     # Display task history
     def displayHistory(self):
         self.__task_history.displayStack()
+
+print(">>>>>>>>>>>>>>>>>>>>>")
+m = TaskManager()
+
+m.addTask("task 1", 3)
+m.addTask("task 2", 7)
+m.addTask("task 3", 5)
+m.addTask("task 4", 2)
+
+m.completeTask()
+m.completeTask()
+
+m.displayQueue()
+m.displayHistory()
+
