@@ -140,12 +140,13 @@ class Stack():
             # Display all items in stack
             for i in range(len(self.__lst)):
                 self.__lst[i].displayTask()
+                print()
             return
         
     # See top of stack
     def peek(self):
-        # Display first item in stack
-        self.__lst[0].displayTask()
+        # Return first item in stack
+        return self.__lst[0]
         
 
 # Task Manager Classs to manage all tasks
@@ -181,23 +182,16 @@ class TaskManager():
 
     # Display task queue
     def displayQueue(self):
+        print("Task Queue:\n")
         self.__task_queue.displayQueue()
 
     # Display task history
     def displayHistory(self):
+        print("Task History:\n")
         self.__task_history.displayStack()
 
-print(">>>>>>>>>>>>>>>>>>>>>")
-m = TaskManager()
-
-m.addTask("task 1", 3)
-m.addTask("task 2", 7)
-m.addTask("task 3", 5)
-m.addTask("task 4", 2)
-
-m.completeTask()
-m.completeTask()
-
-m.displayQueue()
-m.displayHistory()
-
+    # Display last completed task
+    def peekDisplay(self):
+        print("Last Completed:\n")
+        self.__task_history.peek().displayTask()
+        print()
