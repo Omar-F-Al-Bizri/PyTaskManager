@@ -89,17 +89,7 @@ class TaskQueue():
 
     # Display Priority Queue
     def displayQueue(self):
-        # Case 1: List is empty
-        if self.isEmpty():
-            # Inform User that list is empty
-            print("Empty")
-        # Case 2: List not empty
-        else:
-            # Display all items in queue
-            for i in range(len(self.__lst)):
-                self.__lst[i].displayTask()
-                print()
-        return
+        return self.__lst
     
 
 # Stack Class to store completed tasks
@@ -131,17 +121,7 @@ class Stack():
     
     # Display Stack
     def displayStack(self):
-        # Case 1: List is empty
-        if self.isEmpty():
-            # Inform User that list is empty
-            print("Empty")
-        # Case 2: List not empty
-        else:
-            # Display all items in stack
-            for i in range(len(self.__lst)):
-                self.__lst[i].displayTask()
-                print()
-            return
+        return self.__lst
         
     # See top of stack
     def peek(self):
@@ -187,21 +167,12 @@ class TaskManager():
 
     # Display task queue
     def displayQueue(self):
-        print("Task Queue:")
-        self.__task_queue.displayQueue()
-        print()
+        return self.__task_queue.displayQueue()
 
     # Display task history
     def displayHistory(self):
-        print("Task History:")
-        self.__task_history.displayStack()
-        print()
+        return self.__task_history.displayStack()
 
     # Display last completed task
     def peekDisplay(self):
-        print("Last Completed:")
-        if (self.__task_history.isEmpty()):
-            print(None)
-        else:
-            self.__task_history.peek().displayTask()
-        print()
+        return self.__task_history.peek()
