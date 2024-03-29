@@ -34,9 +34,7 @@ class Task:
 
     # Display Task
     def displayTask(self):
-        print("Task:", self.__desc, "(id: #" + str(self.__id) + ")")
-        print("Priority:", self.__prty)
-        print("Completed:", self.__completed)
+        return {"desc": self.__desc, "id": self.__id, "priority": self.__prty, "status": self.__completed}
 
 
 #Task Queue Class to store Tasks
