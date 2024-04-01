@@ -1,8 +1,23 @@
 import tkinter as tk
+from classes import TaskManager
 
 
 # Display Task Manager using tkinter
 def displayTaskManager():
+
+    manager = TaskManager
+
+    # Add a task to the queue
+    def addTask():
+        # Get task description and priority from the tkinter textboxes: "desc_var" and "prrty_var"
+        if (not ((desc_var.get() == "") and (prrty_var.get() == ""))):
+            desc = desc_var.get()
+            prrty = int(prrty_var.get())
+
+            # Add the input task to the queue
+            manager.addTask(desc, prrty)
+
+
     # Display Window
     root = tk.Tk()
     root.geometry("800x500")
