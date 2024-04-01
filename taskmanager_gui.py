@@ -108,6 +108,15 @@ def displayTaskManager():
     # Label
     search_label = tk.Label(search_frame, text="Task Search")
     search_label.pack()
+    # Search Bar
+    search_var = tk.StringVar()
+    search_bar = tk.Entry(search_frame, textvariable=search_var)
+    search_bar.pack()
+    # Search Button
+    search_button = tk.Button(search_frame, text="Search")
+    search_button.pack()
+    # Search Result
+    tk.Label(search_frame, text="Result:").pack()
 
 
     # Run Display Window
