@@ -1,11 +1,12 @@
 import tkinter as tk
 from classes import TaskManager
 
+manager = TaskManager()
 
 # Display Task Manager using tkinter
 def displayTaskManager():
-
-    manager = TaskManager()
+    # Get Task Queue
+    tasks = manager.displayQueue()
 
     # Add a task to the queue
     def addTask():
@@ -16,6 +17,21 @@ def displayTaskManager():
 
             # Add the input task to the queue
             manager.addTask(desc, prrty)
+        
+        # Update the tkinter display
+        updateDisplay()
+
+    # Update the task queue display
+    def updateDisplay():
+        # Delete Previous Queue Display
+        for widget in frame.winfo_children():
+            widget.destroy()
+
+        # Display New Queue
+        tk.Label(frame, text="TASKS:").pack()
+        for task in tasks:
+            label = tk.Label(frame, text=("Task (id: #" + str(task.getID()) + ") Pr(" + str(task.getPriority())+ ")\n" + task.getDesc()))
+            label.pack()
 
 
     # Display Window
