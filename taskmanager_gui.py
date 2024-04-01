@@ -33,6 +33,29 @@ def displayTaskManager():
             label = tk.Label(frame, text=("Task (id: #" + str(task.getID()) + ") Pr(" + str(task.getPriority())+ ")\n" + task.getDesc()))
             label.pack()
 
+    # Mark task as complete and move it to the history
+    def markAsComplete():
+        manager.completeTask()
+        updateHistory()
+        updateDisplay()
+
+    # Update the task history display
+    def updateHistory():
+        # Delete previous history display
+        for widget in hist_frame.winfo_children():
+            widget.destroy()
+
+        # Display new task history
+        # Button to mark highest priority task as complete
+        complete_button = tk.Button(hist_frame, text="Mark As Complete", command=markAsComplete)
+        complete_button.grid(row=0)
+        # Display Last Completed Task
+        tk.Label(hist_frame, text="Last Completed Task:").grid(row=1)
+        last_completed = manager.peekDisplay()
+        if (last_completed != None):
+            hist_label = tk.Label(hist_frame, text=("Task (id: #" + str(last_completed.getID()) + ") COMPLETED\n" + last_completed.getDesc()))
+            hist_label.grid(row=2)
+
 
     # Display Window
     root = tk.Tk()
@@ -75,7 +98,7 @@ def displayTaskManager():
     hist_frame.grid(row=0, column=3, sticky="new")
     tk.Label(hist_frame, text="Last Completed Task:").grid(row=1)
     # Button to mark highest priority task as complete
-    complete_button = tk.Button(hist_frame, text="Mark As Complete")
+    complete_button = tk.Button(hist_frame, text="Mark As Complete", command=markAsComplete)
     complete_button.grid(row=0)
 
 
