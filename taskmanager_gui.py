@@ -8,6 +8,7 @@ def displayTaskManager():
     root.geometry("800x500")
     root.title("Task Manager")
 
+
     # Task Input Frame
     inp_frame = tk.Frame()
     inp_frame.grid(row=0, column=0, sticky="new")
@@ -27,6 +28,13 @@ def displayTaskManager():
     prrty_var = tk.StringVar()
     prrty_entry = tk.Entry(inp_frame, textvariable=prrty_var)
     prrty_entry.pack()
+
+
+    # Task Queue Frame
+    frame = tk.Frame()
+    frame.grid(row=0, column=1, sticky="new")
+    tk.Label(frame, text="TASKS:").pack()
+
 
     # Run Display Window
     root.mainloop()
