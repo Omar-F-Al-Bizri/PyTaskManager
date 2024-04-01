@@ -89,6 +89,13 @@ class TaskQueue():
     def displayQueue(self):
         return self.__lst
     
+    # Get Task with ID
+    def getTaskWithID(self, id : int):
+        for task in self.__lst:
+            if (task.getID() == id):
+                return task
+        return None
+    
 
 # Stack Class to store completed tasks
 class Stack():
@@ -145,10 +152,7 @@ class TaskManager():
 
     # Get task using id
     def getTask(self, id : int):
-        for i in range(len(self.__task_queue)):
-            if (self.__task_queue[i].getID() == id):
-                return self.__task_queue[i]
-        return -1
+        return self.__task_queue.getTaskWithID(id)
     
     # Mark top task as complete
     def completeTask(self):
