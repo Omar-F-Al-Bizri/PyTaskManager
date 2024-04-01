@@ -56,6 +56,23 @@ def displayTaskManager():
             hist_label = tk.Label(hist_frame, text=("Task (id: #" + str(last_completed.getID()) + ") COMPLETED\n" + last_completed.getDesc()))
             hist_label.grid(row=2)
 
+    def searchTask():
+        # Get Search Input From User
+        id_search = int(search_var.get())
+
+        
+        # Search For Task in Queue
+        result = manager.getTask(id_search)      
+
+        # Display New Search Result
+        if (result != None):
+            tk.Label(search_frame, text=("Task (id: #" + str(result.getID()) + ") Pr(" + str(result.getPriority()) + ")\n" + result.getDesc())).pack()
+        else:
+            tk.Label(search_frame, text="Task Not Found").pack()
+
+        # Destroy Previous Search Result
+        search_frame.winfo_children()[-2].destroy()
+
 
     # Display Window
     root = tk.Tk()
@@ -113,7 +130,7 @@ def displayTaskManager():
     search_bar = tk.Entry(search_frame, textvariable=search_var)
     search_bar.pack()
     # Search Button
-    search_button = tk.Button(search_frame, text="Search")
+    search_button = tk.Button(search_frame, text="Search", command=searchTask)
     search_button.pack()
     # Search Result
     tk.Label(search_frame, text="Result:").pack()
