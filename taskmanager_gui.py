@@ -5,7 +5,7 @@ from classes import TaskManager
 # Display Task Manager using tkinter
 def displayTaskManager():
 
-    manager = TaskManager
+    manager = TaskManager()
 
     # Add a task to the queue
     def addTask():
@@ -43,6 +43,9 @@ def displayTaskManager():
     prrty_var = tk.StringVar()
     prrty_entry = tk.Entry(inp_frame, textvariable=prrty_var)
     prrty_entry.pack()
+    # Button to to Add the input task
+    add_button = tk.Button(inp_frame, text="Add Task", command=addTask)
+    add_button.pack()
 
 
     # Task Queue Frame
