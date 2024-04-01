@@ -74,6 +74,9 @@ def displayTaskManager():
     hist_frame = tk.Frame()
     hist_frame.grid(row=0, column=3, sticky="new")
     tk.Label(hist_frame, text="Last Completed Task:").grid(row=1)
+    # Button to mark highest priority task as complete
+    complete_button = tk.Button(hist_frame, text="Mark As Complete")
+    complete_button.grid(row=0)
 
 
     # Run Display Window
