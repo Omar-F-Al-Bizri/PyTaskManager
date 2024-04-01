@@ -70,6 +70,12 @@ def displayTaskManager():
     tk.Label(frame, text="TASKS:").pack()
 
 
+    # Task History Frame
+    hist_frame = tk.Frame()
+    hist_frame.grid(row=0, column=3, sticky="new")
+    tk.Label(hist_frame, text="Last Completed Task:").grid(row=1)
+
+
     # Run Display Window
     root.mainloop()
 
