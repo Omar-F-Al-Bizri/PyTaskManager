@@ -102,6 +102,14 @@ def displayTaskManager():
     complete_button.grid(row=0)
 
 
+    # Task Search Frame
+    search_frame = tk.Frame()
+    search_frame.grid(row=0, column=4, sticky="new")
+    # Label
+    search_label = tk.Label(search_frame, text="Task Search")
+    search_label.pack()
+
+
     # Run Display Window
     root.mainloop()
 
