@@ -19,6 +19,14 @@ def displayTaskManager():
     desc_var = tk.StringVar()
     desc_entry = tk.Entry(inp_frame, textvariable=desc_var)
     desc_entry.pack()
+    # Input Priority of task
+    # Label
+    prrty_label = tk.Label(inp_frame, text="Priority")
+    prrty_label.pack()
+    # Input
+    prrty_var = tk.StringVar()
+    prrty_entry = tk.Entry(inp_frame, textvariable=prrty_var)
+    prrty_entry.pack()
 
     # Run Display Window
     root.mainloop()
