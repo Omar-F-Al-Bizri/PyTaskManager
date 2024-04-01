@@ -1,13 +1,15 @@
 import tkinter as tk
 
 
-class GUI():
-    def __init__(self):
-        self.root = tk.Tk()
-        self.root.title("Py Task Manager")
-        self.root.geometry("800x500")
+# Display Task Manager using tkinter
+def displayTaskManager():
+    # Display Window
+    root = tk.Tk()
+    root.geometry("800x500")
+    root.title("Task Manager")
 
-        self.root.mainloop()
 
+    # Run Display Window
+    root.mainloop()
 
-app = GUI()
+displayTaskManager()
